@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>查询亲属关系</title>
+		<link rel="stylesheet" type="text/css" href="../../css/all.css" />
+		<link rel="stylesheet" type="text/css" href="../css/base.css" />
+		<script src="../../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/input_setting.js" type="text/javascript" charset="UTF-8"></script>
+		<script>
+			$().ready(function(){
+				$("#search_relation").click(function(){
+					var flag = false;
+					$(".nonull").each(function(){
+						if($(this).val() == ""){
+							$("form").attr("action","javascript:void(0);");
+							flag = true;
+						}else{
+							flag = false;
+							$("form").attr("action","/HMS/servlet/relationmanage");
+							
+						}
+					});
+					if(flag){
+						alert("带*的选项不能为空");
+					}
+				});
+			});
+		</script>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+			form{
+				margin: auto;
+				width: 1000px;
+			}
+			table{
+				width: 1000px;
+				border: 1px solid black;
+			}
+			table em{
+				color: #FF0000;
+			}
+			td{
+				height: 40px;
+				border: 1px solid black;
+			}
+			form input{
+				width: 99.7%;
+				height: 99.7%;
+			}
+			#search_relation{
+				float: right;
+				margin-top: 10px;
+				margin-right: 10px;
+				width: 80px;
+				height: 40px;
+			}
+			#reset{
+				float: right;
+				margin-top: 10px;
+				width: 80px;
+				height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>查询亲属关系</h1>
+		<form action="/HMS/servlet/relationmanage" method="post">
+			<input type="hidden" name="func" value="searchRelation"/>
+			<table>
+				<tr>
+					<td>身份证<em>*</em></td>
+					<td><input type="text" name="id" class="nonull"/></td>
+				</tr>
+			</table>
+			<input type="reset" name="reset" id="reset" value="清空" /><input type="submit" name="search_relation" id="search_relation"
+			value="搜索" />
+		</form>
+	</body>
+</html>

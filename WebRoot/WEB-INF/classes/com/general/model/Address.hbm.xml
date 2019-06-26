@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-11-29 13:01:54 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.general.model.Address" table="t_address">
+        <id name="addr_id" type="java.lang.String">
+            <column name="addr_id" />
+            <generator class="uuid" />
+        </id>
+        <property name="householder_id" type="java.lang.String">
+            <column name="householder_id" />
+        </property>
+         <property name="collective_id" type="java.lang.String">
+            <column name="collective_id" />
+        </property>
+        <property name="province_name" type="java.lang.String">
+            <column name="province_name" />
+        </property>
+        <property name="city_name" type="java.lang.String">
+            <column name="city_name" />
+        </property>
+        <property name="district_name" type="java.lang.String">
+            <column name="district_name" />
+        </property>
+        <property name="town_name" type="java.lang.String">
+            <column name="town_name" />
+        </property>
+        <property name="village_name" type="java.lang.String">
+            <column name="village_name" />
+        </property>
+        <property name="expand" type="java.lang.String">
+            <column name="expand" />
+        </property>
+        <property name="evacuation_date" type="java.util.Date">
+            <column name="evacuation_date" />
+        </property>
+        <property name="immigratory_date" type="java.util.Date">
+            <column name="immigratory_date" />
+        </property>
+    </class>
+</hibernate-mapping>

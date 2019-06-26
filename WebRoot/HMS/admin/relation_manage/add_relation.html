@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="/HMS/HMS/admin/relation_manage/" />
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">    
+		<meta http-equiv="keywords" content="add resident">
+		<meta http-equiv="description" content="This is add resident page">
+		<meta http-equiv="content-Type" content="text/html; charset=utf-8">
+		<title>添加亲属关系</title>
+		<link rel="stylesheet" type="text/css" href="../../css/all.css" />
+		<link rel="stylesheet" type="text/css" href="../css/base.css" />
+		<script src="../../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/input_setting.js" type="text/javascript" charset="UTF-8"></script>
+		<script>	
+			$().ready(function(){
+				for(var i=0; i<260; i++)
+					$("#age").append("<option value='"+i+"'>");
+				$("[name='age']").keypress(function(){
+					var kcount = $(this).val().length;
+					if(kcount > 2){
+						return false;
+					}
+				});
+				$("#add_relation").click(function(){
+					var flag = false;
+					$(".nonull").each(function(){
+						if($(this).val() == ""){
+							$("form").attr("action","javascript:void(0);");
+							flag = true;
+						}
+					});
+					if(flag){
+						alert("带*的选项不能为空");
+					}
+				});
+			});
+		</script>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+			form{
+				margin: auto;
+				width: 1000px;
+			}
+			table{
+				width: 1000px;
+				border: 1px solid black;
+			}
+			td{
+				height: 40px;
+				border: 1px solid black;
+			}
+			td em{
+				color: #FF0000;
+			}
+			form input{
+				width: 99%;
+				height: 99%;
+			}
+			form select{
+				width: 100%;
+				height: 99%;
+			}
+			#add_relation{
+				float: right;
+				margin-top: 10px;
+				margin-right: 10px;
+				width: 80px;
+				height: 40px;
+			}
+			#reset{
+				float: right;
+				margin-top: 10px;
+				width: 80px;
+				height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>添加亲属关系</h1>
+		<form action="/HMS/servlet/relationmanage" method="post">
+			<input type="hidden" name="func" value="addRelation"/>
+			<table>
+				<tr>
+					<td>本人身份证<em>*</em></td>
+					<td><input type="text" name="self_id" class="nonull"/></td>
+					<td>父亲身份证<em>*</em></td>
+					<td><input type="text" name="father_id" class="nonull"/></td>
+				</tr>
+				<tr>
+					<td>母亲身份证<em>*</em></td>
+					<td><input type="text" name="mother_id" class="nonull" /></td>
+					<td>配偶身份证</td>
+					<td><input list="age" name="spouse_id" /></td>
+				</tr>
+			</table>
+			<input type="reset" name="reset" id="reset" value="清空" /><input type="submit" name="add_relation" id="add_relation" value="添加" />
+		</form>
+	</body>
+</html>

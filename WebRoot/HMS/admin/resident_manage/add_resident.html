@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="/HMS/HMS/admin/resident_manage/" />
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">    
+		<meta http-equiv="keywords" content="add resident">
+		<meta http-equiv="description" content="This is add resident page">
+		<meta http-equiv="content-Type" content="text/html; charset=utf-8">
+		<title>添加居民信息</title>
+		<link rel="stylesheet" type="text/css" href="../../css/all.css" />
+		<link rel="stylesheet" type="text/css" href="../css/base.css" />
+		<script src="../../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/input_setting.js" type="text/javascript" charset="UTF-8"></script>
+		<script>	
+			$().ready(function(){
+				for(var i=0; i<260; i++)
+					$("#age").append("<option value='"+i+"'>");
+				$("[name='id']").keypress(function(){
+					var kcount = $(this).val().length;
+					if(kcount > 17 || (event.keyCode < 48 || event.keyCode > 57)){
+						if(kcount == 17 && event.keyCode == 88)
+							return true;
+						else if(kcount == 17 && event.keyCode == 120)
+							alert("请最后一位输入写X");
+						return false;
+					}
+				});
+				$("[name='age']").keypress(function(){
+					var kcount = $(this).val().length;
+					if(kcount > 2){
+						return false;
+					}
+				});
+				$("#add_resident").click(function(){
+					var flag = false;
+					$(".nonull").each(function(){
+						if($(this).val() == ""){
+							$("form").attr("action","javascript:void(0);");
+							flag = true;
+						}else{
+							flag=false;
+							$("form").attr("action","/HMS/servlet/resident");
+						}
+					});
+					if(flag){
+						alert("带*的选项不能为空");
+					}
+				});
+			});
+		</script>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+			form{
+				margin: auto;
+				width: 1000px;
+			}
+			table{
+				width: 1000px;
+				border: 1px solid black;
+			}
+			td{
+				height: 40px;
+				border: 1px solid black;
+			}
+			td em{
+				color: #FF0000;
+			}
+			form input{
+				width: 99%;
+				height: 99%;
+			}
+			#add_resident{
+				float: right;
+				margin-top: 10px;
+				margin-right: 10px;
+				width: 80px;
+				height: 40px;
+			}
+			#reset{
+				float: right;
+				margin-top: 10px;
+				width: 80px;
+				height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>添加居民信息</h1>
+		<form action="/HMS/servlet/resident" method="post">
+			<input type="hidden" name="func" value="addResident" />
+			<table>
+				<tr>
+					<td>身份证<em>*</em></td>
+					<td><input type="text" name="id" class="nonull"/></td>
+					<td>姓名<em>*</em></td>
+					<td><input type="text" name="name" class="nonull"/></td>
+				</tr>
+				<tr>
+					<td>性别<em>*</em></td>
+					<td><input list="sex" name="sex" class="nonull" />
+						<datalist id="sex">
+						   <option value="男"></option>
+						   <option value="女"></option>
+						</datalist> 
+					</td>
+					<td>年龄<em>*</em></td>
+					<td><input list="age" name="age" class="nonull" />
+						<datalist id="age">
+						</datalist>
+					</td>
+				</tr>
+				<tr>
+					<td>出生日期<em>*</em></td>
+					<td><input type="date" name="birthday" class="nonull"/></td>
+					<td>曾用名</td>
+					<td><input type="text" name="former_name"/></td>
+				</tr>
+				<tr>
+					<td>宗教信仰</td>
+					<td><input type="text" name="religion"/></td>
+					<td>民族</td>
+					<td><input type="text" name="national"/></td>
+				</tr>
+				<tr>
+					<td>身高</td>
+					<td><input type="text" name="stature"/></td>
+					<td>受教育情况</td>
+					<td><input type="text" name="education"/></td>
+				</tr>
+				<tr>
+					<td>手机号</td>
+					<td><input type="text" name="phone"/></td>
+					<td>......</td>
+					<td><input type="text" name="xxx"/></td>
+				</tr>
+			</table>
+			<input type="reset" name="reset" id="reset" value="清空" /><input type="submit" name="add_resident" id="add_resident" value="添加" />
+		</form>
+	</body>
+</html>

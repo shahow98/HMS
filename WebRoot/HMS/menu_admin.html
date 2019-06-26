@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>menu</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#first").click(function(){
+					$("#first").nextUntil("#second").slideToggle("slow");
+				});
+				$("#second").click(function(){
+					$("#second").nextUntil("#three").slideToggle("slow");
+				});
+				$("#three").click(function(){
+					$("#three").nextUntil("#fourth").slideToggle("slow");
+				});
+				$("#fourth").click(function(){
+					$("#fourth").nextUntil("#fifth").slideToggle("slow");
+				});
+			});
+		</script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#menu .root,
+			.sub {
+				width: 100%;
+				height: 30px;
+			}
+
+			#menu .items {
+				display: block;
+				width: 100%;
+				height: 100%;
+				line-height: 30px;
+				color: black;
+				text-align: center;
+				text-decoration: none;
+			}
+			
+		
+			#menu .sub {
+				display: none;
+				width: 100%;
+				height: 30px;
+				border-bottom: 1px solid black;
+			}
+			
+			#menu .root{
+				height: 40px;
+				border-bottom: 1px solid black;
+			}
+			
+			#menu .root .items{
+				line-height: 40px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="menu">
+			<div  id="first" class="root">
+				<a class="items" href="javascript:void(0);">居民信息管理</a>
+			</div>
+			<div class="sub">
+				<a class="items" href="admin/resident_manage/search_resident.html" target="main">查询居民信息</a>
+			</div>
+			<div class="sub">
+				<a class="items" href="admin/resident_manage/add_resident.html" target="main">添加居民信息</a>
+			</div>
+			<div id="second" class="root">
+				<a class="items" href="javascript:void(0);">管理员信息管理</a>
+			</div>
+			<div class="sub">
+				<a class="items" href="admin/admin_manage/search_user.html" target="main">查询管理员信息</a>
+			</div>
+			<div class="sub">
+				<a class="items" href="admin/admin_manage/add_user.html" target="main">添加管理员信息</a>
+			</div>
+			<div id="three" class="root">
+				<a class="items" href="javascript:void(0);">户口管理</a>
+			</div>
+			<div class="sub">
+				<a class="items" href="admin/household_manage/search_household.html" target="main">查询家庭户口信息</a>
+			</div>
+			<div class="sub">
+				<a class="items" href="admin/household_manage/add_household.html" target="main">添加家庭户口</a>
+			</div>
+			<div class="sub">
+				<a class="items" href="admin/household_manage/add_housemember.html" target="main">添加家庭户口成员</a>
+			</div>
+			<div class="sub">
+				<a class="items" href="admin/household_manage/search_collective.html" target="main">查询集体户口信息</a>
+			</div>
+			<div class="sub">
+				<a class="items" href="admin/household_manage/add_collective.html" target="main">添加集体户口</a>
+			</div>
+			<div class="sub">
+				<a class="items" href="admin/household_manage/add_collmember.html" target="main">添加集体户口成员</a>
+			</div>
+			<div id="fourth" class="root">
+				<a class="items" href="javascript:void(0);">亲属关系</a>
+			</div>
+			<div class="sub">
+				<a class="items" href="admin/relation_manage/search_relation.html" target="main">查询亲属关系</a>
+			</div>
+			<div class="sub">
+				<a class="items" href="admin/relation_manage/add_relation.html" target="main">添加亲属关系</a>
+			</div>
+			
+			<div id="fifth" class="root">
+				<a class="items" href="javascript:void(0);">系统设置</a>
+			</div>
+			<div id="sixth" class="root">
+				<a class="items" href="login.jsp" target="_top">退出系统</a>
+			</div>
+		</div>
+	</body>
+</html>

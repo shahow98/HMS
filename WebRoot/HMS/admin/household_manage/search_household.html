@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="/HMS/HMS/admin/household_manage/" />
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">    
+		<meta http-equiv="keywords" content="add collective">
+		<meta http-equiv="description" content="This is add collective page">
+		<meta http-equiv="content-Type" content="text/html; charset=utf-8">
+		<title>查询家庭户口信息</title>
+		<link rel="stylesheet" type="text/css" href="../../css/all.css" />
+		<link rel="stylesheet" type="text/css" href="../css/base.css" />
+		<script src="../../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/input_setting.js" type="text/javascript" charset="UTF-8"></script>
+		<script>
+			$().ready(function(){
+				$("#search_household").click(function(){
+					var c = 0;
+					$("input:text").each(function(){
+						if( $(this).val() != ""){
+							c++;
+						}
+					});
+					if(c == 0){//搜索全部
+						$("#func").attr("value","searchHouseholdAll");
+					}else if(c > 0){
+						$("#func").attr("value","searchHousehold");
+					}
+				});
+				
+			});
+		</script>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+			form{
+				margin: auto;
+				width: 1000px;
+			}
+			table{
+				width: 1000px;
+				border: 1px solid black;
+			}
+			td{
+				height: 40px;
+				border: 1px solid black;
+			}
+			form input{
+				width: 99.5%;
+				height: 99%;
+			}
+			#search_household{
+				float: right;
+				margin-top: 10px;
+				margin-right: 10px;
+				width: 80px;
+				height: 40px;
+			}
+			#reset{
+				float: right;
+				margin-top: 10px;
+				width: 80px;
+				height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>查询家庭户口信息</h1>
+		<form action="/HMS/servlet/householdmanage" method="post">
+			<input type="hidden" name="func" id="func" value="" />
+			<table>
+				<tr>
+					<td>身份证</td>
+					<td><input type="text" name="member_id" /></td>
+				</tr>
+			</table>
+			<input type="reset" name="reset" id="reset" value="清空" /><input type="submit" name="search_household" id="search_household"
+			 value="搜索" />
+		</form>
+	</body>
+</html>

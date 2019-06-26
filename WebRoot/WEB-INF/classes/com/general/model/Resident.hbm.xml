@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-11-29 13:01:54 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.general.model.Resident" table="t_resident">
+        <id name="id" type="java.lang.String">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name" />
+        </property>
+        <property name="sex" type="java.lang.Integer">
+            <column name="sex" />
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="age" />
+        </property>
+        <property name="birthday" type="java.util.Date">
+            <column name="birthday" />
+        </property>
+        <property name="registry_date" type="java.util.Date">
+            <column name="registry_date" />
+        </property>
+        <property name="collective_id" type="java.lang.String">
+            <column name="collective_id" />
+        </property>
+        <property name="householder_id" type="java.lang.String">
+            <column name="householder_id" />
+        </property>
+        <property name="former_name" type="java.lang.String">
+            <column name="former_name" />
+        </property>
+        <property name="religion" type="java.lang.String">
+            <column name="religion" />
+        </property>
+        <property name="national" type="java.lang.String">
+            <column name="national" />
+        </property>
+        <property name="native_place" type="java.lang.String">
+            <column name="native_place" />
+        </property>
+        <property name="birthplace" type="java.lang.String">
+            <column name="birthplace" />
+        </property>
+        <property name="stature" type="java.lang.Float">
+            <column name="stature" />
+        </property>
+        <property name="education" type="java.lang.String">
+            <column name="education" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="phone" />
+        </property>
+    </class>
+</hibernate-mapping>
